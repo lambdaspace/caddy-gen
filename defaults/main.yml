@@ -1,2 +1,9 @@
 ---
-# defaults file for caddy_gen
+# Location of docker socket on host machine
+docker_socket: /var/run/docker.sock
+
+# Where ACME will be stored
+acme_storage: /etc/certs/acme
+
+# Where Certs will be stored
+cert_storage: /etc/certs/ocsp

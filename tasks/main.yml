@@ -1,18 +1,23 @@
 ---
+- name: Create Certificate storage directories
+  file:
+    path: "{{ item }}"
+    state: directory
+    recurse: yes
+  with_items:
+    - "{{ acme_storage }}"
+    - "{{ cert_storage }}"
 - name: Start Caddy
   docker_container:
     name: "{{ inventory_hostname }}_caddy"
     image: wemakeservices/caddy-gen:latest
     state: started
-    restart: yes  # Force a restart to get new config
-    # TODO: test recreated vs restarted for config reload
-    # recreate: yes
     restart_policy: unless-stopped
     timeout: 120
     volumes:
-      - /var/run/docker.sock:/tmp/docker.sock:ro
-      - ./certs/acme:/etc/caddy/acme
-      - ./certs/ocsp:/etc/caddy/ocsp
+      - "{{ docker_socket }}:/tmp/docker.sock:ro"
+      - "{{ acme_storage }}:/etc/caddy/acme"
+      - "{{ cert_storage }}:/etc/caddy/ocsp"
     ports:
       - "80:80"
       - "443:443"
