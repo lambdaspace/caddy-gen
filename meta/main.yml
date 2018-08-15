@@ -5,12 +5,12 @@ galaxy_info:
   author: panagiks
   description: Deploy Caddy-gen Docker container.
   company: "Lambdaspace"
-  license: "license (MIT)"
+  license: "license MIT"
   min_ansible_version: 2.1
   galaxy_tags:
     - docker
     - caddy
-    - caddy-gen
+    - caddy_gen
     - web
     - containers
     - orchestration
