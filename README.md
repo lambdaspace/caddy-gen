@@ -8,6 +8,7 @@ Requirements
 ------------
 
 Ansible 2.1 (because of `docker_container` module)
+
 `docker` Python library (again needed by `docker_container`). [Example installation](https://github.com/geerlingguy/ansible-role-docker#use-with-ansible-and-docker-python-library).
 
 Role Variables
@@ -24,9 +25,9 @@ Example Playbook
 ----------------
 
 ```yaml
-    - hosts: servers
-      roles:
-         - { role: panagiks.caddy_gen }
+- hosts: servers
+  roles:
+     - { role: panagiks.caddy_gen }
 ```
 
 License
